@@ -18,13 +18,11 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 
 		Properties prop = new Properties();
-		prop.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:2181");
+		prop.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
 		AdminClient admin = AdminClient.create(prop);
 		ListTopicsResult topics = admin.listTopics();
 		topics.names().get().forEach(System.out::println);
 		admin.close(Duration.ofSeconds(30));
-
-
 
 	}
 
